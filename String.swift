@@ -30,3 +30,19 @@ func testPalindrome(palindromeStr: String) -> Bool {
     }
    return true
 }
+
+// MARK: Check Permutation - whether for given two strings, one is permutation of other or not
+// MARK: Check anagrams
+func checkPermutation(str1: String, str2: String) -> Bool {
+        // Base case
+        if str1.count != str2.count {
+            return false
+        }
+        
+        let sortedStr1 = str1.sorted(by: {$0 < $1})
+        let sortedStr2 = str2.sorted(by: {$0 < $1})
+        for index in 0..<sortedStr1.count where sortedStr1[index] != sortedStr2[index] {
+            return false
+        }
+    return true
+ }
