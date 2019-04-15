@@ -2,7 +2,7 @@
 print("Enter the string")
 let string = readLine()!
 var resultString = ""
-for i in 0...(string.count - 1)  {
+for i in 0..<string.count  {
     let index = string.index(string.startIndex, offsetBy: (string.count - 1) - i)
     resultString.append(string[index])
 }
