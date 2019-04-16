@@ -61,3 +61,23 @@ func checkAnagrams(str1: String, str2: String) -> Bool {
             return value != 0
         })
  }
+
+// MARK: How many palindromes are in a word with string length > 2
+/* For eg: str = "abbaeae" thus output is 4
+   Explanation : All palindrome substring are : "bb", "abba", "aea", "eae":
+*/
+func noOfPalindromes(inString str: String) -> Int {
+        var count = 0
+        for i in 0..<str.count {
+            let iIndex = str.index(str.startIndex, offsetBy: i)
+            for j in (i+1)..<str.count {
+                let jIndex = str.index(str.startIndex, offsetBy: j)
+                let tempSubString = str[iIndex...jIndex]
+                let rvrString = String(tempSubString.reversed())
+                if rvrString.compare(tempSubString) == .orderedSame {
+                    count = count + 1
+                }
+            }
+        }
+    return count
+ }
