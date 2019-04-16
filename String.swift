@@ -46,3 +46,18 @@ func checkPermutation(str1: String, str2: String) -> Bool {
         }
     return true
  }
+
+// MARK: Check anagrams - optimised solution - Time O(n) and space O(n)
+func checkAnagrams(str1: String, str2: String) -> Bool {
+        guard str1.count == str2.count else { return false }
+        var dictionary = Dictionary<Character, Int>()
+        for index in 0..<str1.count {
+            let value1 = str1[str1.index(str1.startIndex, offsetBy: index)]
+            let value2 = str2[str2.index(str2.startIndex, offsetBy: index)]
+            dictionary[value1] = (dictionary[value1] ?? 0) + 1
+            dictionary[value2] = (dictionary[value2] ?? 0) - 1
+        }
+        return !dictionary.contains(where: {(_, value) in
+            return value != 0
+        })
+ }
