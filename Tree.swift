@@ -71,3 +71,35 @@ func levelOrderTraversal(with rootNode: Node<Int>?) {
     }
     queueInstance = nil
 }
+
+
+func zigZagTraversalInSpiralOrder<T: Comparable>(with rootNode: Node<T>?) {
+    guard let rootNode = rootNode else { return }
+    var stack1 = Stack.init(with: [])
+    var stack2 = Stack.init(with: [])
+    stack1.push(rootNode)
+    while !stack1.isEmpty() || !stack2.isEmpty() {
+        while !stack1.isEmpty() {
+            let node = stack1.top() as? Node<T>
+            print(node?.data ?? 0)
+            stack1.pop()
+            if let leftChild = node?.child.first {
+                stack2.push(leftChild)
+            }
+            if let rightChild = node?.child.last {
+                stack2.push(rightChild)
+            }
+        }
+        while !stack2.isEmpty() {
+            let node = stack2.top() as? Node<T>
+            print(node?.data ?? 0)
+            stack2.pop()
+            if let rightChild = node?.child.last {
+                stack1.push(rightChild)
+            }
+            if let leftChild = node?.child.first {
+                stack1.push(leftChild)
+            }
+        }
+    }
+}
