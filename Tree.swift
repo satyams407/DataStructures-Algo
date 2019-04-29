@@ -54,3 +54,20 @@ func postOrderTraversal(with rootNode: Node<Int>?) {
     postOrderTraversal(with: rootNode.child.last)
     print(rootNode.value)
 }
+
+func levelOrderTraversal(with rootNode: Node<Int>?) {
+    guard let rootNode = rootNode else { return }
+    var queueInstance: Queue? = Queue.init(with: [rootNode])
+    guard let queue = queueInstance else { return }
+    while(!queue.isEmpty()) {
+        print(queue.front?.value ?? 0)
+        let tempNode = queue.dequeue()
+        if let leftChild = tempNode?.child.first {
+            queue.Enqueue(leftChild)
+        }
+        if let rightChild = tempNode?.child.last {
+            queue.Enqueue(rightChild)
+        }
+    }
+    queueInstance = nil
+}
