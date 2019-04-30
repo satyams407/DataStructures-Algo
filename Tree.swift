@@ -103,3 +103,39 @@ func zigZagTraversalInSpiralOrder<T: Comparable>(with rootNode: Node<T>?) {
         }
     }
 }
+
+// Optimised way using 2 stacks 
+// Time complexity - O(n)
+// Space complexity - O(n) + O(n) = O(n) 
+func zigZagTraversalInSpiralOrder<T: Comparable>(with rootNode: Node<T>?) {
+    guard let rootNode = rootNode else { return }
+    var stack1 = Stack.init(with: [])
+    var stack2 = Stack.init(with: [])
+    stack1.push(rootNode)
+    var isLeftToRight = false
+    while !stack1.isEmpty() {
+        if let node = stack1.top() as? Node<T> {
+            print(node.data)
+            stack1.pop()
+            if isLeftToRight {
+                if let rightChild = node.child.last {
+                    stack2.push(rightChild)
+                }
+                if let leftChild = node.child.first {
+                    stack2.push(leftChild)
+                }
+            } else {
+                if let leftChild = node.child.first {
+                    stack2.push(leftChild)
+                }
+                if let rightChild = node.child.last {
+                    stack2.push(rightChild)
+                }
+            }
+        }
+        if stack1.isEmpty() {
+            isLeftToRight = !isLeftToRight
+            swap(&stack1, &stack2)
+        }
+    }
+}
