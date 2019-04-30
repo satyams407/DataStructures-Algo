@@ -139,3 +139,33 @@ func zigZagTraversalInSpiralOrder<T: Comparable>(with rootNode: Node<T>?) {
         }
     }
 }
+
+// Time complexity - O(n) and space is O(1)
+func diameterOfTree<T: Comparable>(with rootNode: Node<T>?) -> Int {
+    guard let root = rootNode else { return 0 }
+    var leftSubtreeRoot = root
+    var rightSubtreeRoot = root
+    var leftWidth = 0
+    var rightWidth = 0
+    while true {
+        if let leftchild = leftSubtreeRoot.child.first {
+            leftSubtreeRoot = leftchild
+        } else if let rightChild = leftSubtreeRoot.child.last {
+            leftSubtreeRoot = rightChild
+        } else {
+            break
+        }
+        leftWidth = leftWidth + 1
+    }
+    while true {
+        if let rightChild = rightSubtreeRoot.child.last {
+            rightSubtreeRoot = rightChild
+        } else if let leftchild = rightSubtreeRoot.child.first {
+            rightSubtreeRoot = leftchild
+        } else {
+            break
+        }
+        rightWidth = rightWidth + 1
+    }
+    return leftWidth + rightWidth + 1
+}
