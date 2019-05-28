@@ -1,0 +1,31 @@
+//
+//  LinkedList.swift
+//  DataStructures
+//
+//  Created by Satyam Sehgal on 28/05/19.
+//  Copyright © 2019 Satyam Sehgal. All rights reserved.
+//
+
+import Foundation
+
+class LinkedListNode<T> where T: Comparable {
+    var data: T
+    var nextPointer: LinkedList<T>?
+    
+    init(with data: T) {
+        self.data = data
+    }
+}
+
+let headNode = LinkedListNode(with: 1)
+let llNode2 = LinkedListNode(with: 2)
+let llNode3 = LinkedListNode(with: 3)
+let llNode4 = LinkedListNode(with: 4)
+let llNode5 = LinkedListNode(with: 5)
+let llNode6 = LinkedListNode(with: 6)
+
+
+// find nth node from the end
+// brute force approach - o(n) + o(n) (two scans) = find the length - m then travese till m - (n-1) node
+// efficent approach
+
