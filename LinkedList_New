@@ -8,24 +8,53 @@
 
 import Foundation
 
-class LinkedListNode<T> where T: Comparable {
+public class LinkedListNode<T>: Comparable where T: Comparable {
     var data: T
-    var nextPointer: LinkedList<T>?
+    var nextPointer: LinkedListNode<T>?
     
     init(with data: T) {
         self.data = data
     }
+    
+    public func addNextPointer(_ node: LinkedListNode<T>?) {
+        self.nextPointer = node
+    }
+    
+    public static func == (lhs: LinkedListNode<T>, rhs: LinkedListNode<T>) -> Bool {
+        return lhs.data == rhs.data
+    }
+    
+    public static func < (lhs: LinkedListNode<T>, rhs: LinkedListNode<T>) -> Bool {
+        return lhs.data < rhs.data
+    }
 }
 
-let headNode = LinkedListNode(with: 1)
-let llNode2 = LinkedListNode(with: 2)
-let llNode3 = LinkedListNode(with: 3)
-let llNode4 = LinkedListNode(with: 4)
-let llNode5 = LinkedListNode(with: 5)
-let llNode6 = LinkedListNode(with: 6)
+var headNode = LinkedListNode(with: 1)
+var llNode2 = LinkedListNode(with: 2)
+var llNode3 = LinkedListNode(with: 3)
+var llNode4 = LinkedListNode(with: 4)
+var llNode5 = LinkedListNode(with: 5)
+var llNode6 = LinkedListNode(with: 6)
 
 
 // find nth node from the end
 // brute force approach - o(n) + o(n) (two scans) = find the length - m then travese till m - (n-1) node
 // efficent approach
-
+func lastNthFromEnd<T: Comparable>(with headNode: LinkedListNode<T>, n: Int) -> LinkedListNode<T>? {
+    var tempHeadNode: LinkedListNode<T>? = headNode
+    var pNthNode: LinkedListNode<T>? = headNode
+    var count = 0
+    while count < n {
+        if tempHeadNode?.nextPointer == nil {
+            print("out of range number")
+            return nil
+        }
+        count = count + 1
+        tempHeadNode = tempHeadNode?.nextPointer
+    }
+    while tempHeadNode != nil {
+        tempHeadNode = tempHeadNode?.nextPointer
+        pNthNode = pNthNode?.nextPointer
+    }
+    return pNthNode
+}
