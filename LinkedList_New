@@ -58,3 +58,20 @@ func lastNthFromEnd<T: Comparable>(with headNode: LinkedListNode<T>, n: Int) -> 
     }
     return pNthNode
 }
+
+// for eg 1->2->3->4->5->6->nil
+// output will be 2->1->4->3->6->5->nil
+func reversePairInLinkedList<T: Comparable>(with headNode: LinkedListNode<T>?) -> LinkedListNode<T>? {
+    var tempNode: LinkedListNode<T>?
+    guard var headNode = headNode, headNode.nextPointer != nil else { return nil }
+    
+    tempNode = headNode.nextPointer
+    headNode.nextPointer = tempNode?.nextPointer
+    tempNode?.nextPointer = headNode
+    if tempNode != nil  { headNode = tempNode! }
+   
+    headNode.nextPointer?.nextPointer = reversePairInLinkedList(with:  headNode.nextPointer?.nextPointer)
+    
+    return headNode
+}
+
