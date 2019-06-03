@@ -81,3 +81,18 @@ func noOfPalindromes(inString str: String) -> Int {
         }
     return count
  }
+
+// MARK: Removes duplicates if any and maintain the orignal order - o(n) + o(n)
+func removeDuplicatesIfAny(with array: [String]) -> [String] {
+    var resultArray = [String]()
+    var countDictionary = Dictionary<String,Int>()
+    
+    for idx in 0..<array.count {
+        let index = array.index(array.startIndex, offsetBy: idx)
+        countDictionary[array[index]] = (countDictionary[array[index]] ?? 0) + 1
+        if countDictionary[array[index]]! < 2 {
+            resultArray.append(array[index])
+        }
+    }
+    return resultArray
+}
