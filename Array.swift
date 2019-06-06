@@ -19,3 +19,20 @@ func minimumProduct(in array: [Int]) -> Int {
   }
   return minProduct
 }
+
+// Function to convert string into int given it contains only 0 to 9 digits
+func myAtoi(with str: String)  -> Int {
+    var result: Int = 0
+    var place: Int = 1
+    let rvstr = str.reversed()
+    for idx in 0..<rvstr.count {
+        var value: Int = 0
+        let index = rvstr.index(rvstr.startIndex, offsetBy: idx)
+        let byte = (rvstr[index].asciiValue! - Character("0").asciiValue!)
+        value = value << 8
+        value = value | Int(byte)
+        result = result + (value * place)
+        place = place*10
+    }
+    return result
+}
