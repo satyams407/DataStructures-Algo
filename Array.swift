@@ -39,6 +39,31 @@ func myAtoi(with str: String)  -> Int {
 
 
 // find max difference between two elements such that larger element appears after smaller element
-func maxDiff(arr: [Int]) {
-    
+func maxDiff(arr: [Int32]) -> Int32 {
+    var maxDiff = INT8_MIN
+    for i in 0..<arr.count {
+        for j in i..<arr.count {
+            if (arr[j] - arr[i]) > maxDiff {
+                maxDiff = (arr[j] - arr[i])
+            }
+        }
+    }
+    return maxDiff
 }
+
+// optimise solution
+func maxDiffOptimsed(arr: [Int32]) -> Int32 {
+    var maxDiff = arr[1] - arr[0]
+    var minElement = arr[0]
+    
+    for i in 1..<arr.count {
+        if arr[i] - minElement > maxDiff {
+            maxDiff = arr[i] - minElement
+        }
+        if arr[i] < minElement {
+            minElement = arr[i]
+        }
+    }
+    return maxDiff
+}
+
