@@ -36,3 +36,9 @@ func myAtoi(with str: String)  -> Int {
     }
     return result
 }
+
+
+// find max difference between two elements such that larger element appears after smaller element
+func maxDiff(arr: [Int]) {
+    
+}
