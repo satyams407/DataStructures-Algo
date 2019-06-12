@@ -38,6 +38,24 @@ func myAtoi(with str: String)  -> Int {
 }
 
 
+func intersectionOfTwoSortedArray() {
+    let arr1 = [1,5,6,9]
+    let arr2 = [2,3,5,9]
+    var i = 0
+    var j = 0
+    while (i < arr1.count && j < arr2.count) {
+        if arr1[i] == arr2[j] { print(arr2[j])
+            i += 1
+            j += 1
+        }
+        else if (arr1[i] < arr2[j]) {
+            i += 1
+        } else {
+            j += 1
+        }
+    }
+}
+
 // find max difference between two elements such that larger element appears after smaller element
 func maxDiff(arr: [Int32]) -> Int32 {
     var maxDiff = INT8_MIN
