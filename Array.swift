@@ -82,3 +82,21 @@ func printAllDuplicates() {
     }
 }
 
+// find largest and smallest number from integer array unsorted one
+// solution1 - apply sorting and return first and last element o(nlogn)
+// solution2 - o(n) - Time complexity + o(1) - space complexity
+func findLargestAndSmallest() {
+    var arr = [2,4,1,6,100,0,-5]
+    var minElement = arr[0]
+    var maxElement = arr[0]
+    
+    for value in arr {
+        if value > maxElement {
+            maxElement = value
+        }
+        if value < minElement {
+            minElement = value
+        }
+    }
+    print("max element is \(maxElement), min element is \(minElement)")
+}
