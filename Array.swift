@@ -67,3 +67,18 @@ func maxDiffOptimsed(arr: [Int32]) -> Int32 {
     return maxDiff
 }
 
+//Given an array of n elements which contains elements from 0 to n-1, with any of these numbers appearing any number of times.
+func printAllDuplicates() {
+    var arr = [1,2,3,1,3,6,6]
+    let n = arr.count
+    for idx in 0..<arr.count {
+        let index = arr[idx] % n
+        arr[index] += n
+    }
+    for idx in 0..<arr.count {
+        if arr[idx]/n > 1 {
+            print(idx)
+        }
+    }
+}
+
