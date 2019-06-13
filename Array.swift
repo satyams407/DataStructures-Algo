@@ -145,3 +145,28 @@ func findCommonElements() {
         }
     }
 }
+
+// Rearrange positive and negative numbers in alternate order
+func rearrange() {
+    var a = [1,-2,3,1,4,-5]
+    var i = -1
+    var j = 0
+    while j < a.count {
+        if a[j] < 0 {
+            i += 1
+            a.swapAt(i, j)
+        }
+        j += 1
+    }
+    
+    var postivePosition = i + 1
+    var negativePosition = 0
+    
+    while (postivePosition < a.count  && negativePosition < postivePosition && a[negativePosition] < 0) {
+        a.swapAt(negativePosition, postivePosition)
+        postivePosition += 1
+        negativePosition += 2
+    }
+    
+    print(a)
+}
