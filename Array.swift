@@ -100,6 +100,24 @@ func printAllDuplicates() {
     }
 }
 
+// find whether duplicates are there or not in an array
+// return true if duplicates are there
+func hasDuplicates(_ numarray: [Int]) -> Bool {
+    if numarray.count == 0 || numarray.count == 1  {
+        print("no duplicates")
+        return false
+    }
+    
+    let set = Set(numarray)
+    
+    if set.count != numarray.count { return true }
+    
+    return false
+}
+// Or How to remove duplicates - take dictionary ..filter out the array if it contains more than one
+
+
+
 // find largest and smallest number from integer array unsorted one
 // solution1 - apply sorting and return first and last element o(nlogn)
 // solution2 - o(n) - Time complexity + o(1) - space complexity
