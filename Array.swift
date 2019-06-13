@@ -118,3 +118,30 @@ func findLargestAndSmallest() {
     }
     print("max element is \(maxElement), min element is \(minElement)")
 }
+
+
+// common elements in three unsorted array
+func findCommonElements() {
+    let a1 = [1,5,10,20,40,80]
+    let a2 = [6,7,20,80,100]
+    let a3 = [3,4,15,20,30,70,80,120]
+    var i = 0
+    var j = 0
+    var k = 0
+    
+    while (i < a1.count) && (j < a2.count) && (k < a3.count) {
+        
+        if (a1[i] == a2[j]) && (a2[j] == a3[k]) {
+            print(a1[i])
+            i += 1
+            j += 1
+            k += 1
+        } else if a1[i] < a2[j] {
+            i += 1
+        } else if a2[j] < a3[k] {
+            j += 1
+        } else {
+            k += 1
+        }
+    }
+}
