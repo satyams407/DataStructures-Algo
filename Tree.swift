@@ -169,3 +169,20 @@ func diameterOfTree<T: Comparable>(with rootNode: Node<T>?) -> Int {
     }
     return leftWidth + rightWidth + 1
 }
+
+//LCA of binary tree
+func findLCA<T: Comparable>(with rootNode: Node<T>?, a: Node<T>, b: Node<T>) -> Node<T>? {
+    guard let rootNode = rootNode else { return nil}
+    
+    if (rootNode == a || rootNode == b) {
+        return rootNode
+    }
+    
+    let leftNode: Node? = findLCA(with: rootNode.leftNode, a: a, b: b)
+    let rightNode: Node? = findLCA(with: rootNode.rightNode, a: a, b: b)
+    
+    if leftNode != nil  && rightNode != nil { return rootNode }
+    else if leftNode == nil  && rightNode == nil { return nil }
+    
+    return leftNode != nil ? leftNode : rightNode
+}
