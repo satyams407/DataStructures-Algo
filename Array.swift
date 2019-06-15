@@ -188,3 +188,16 @@ func rearrange() {
     
     print(a)
 }
+
+// maximum sum subarray of length k
+func findMaxSubArray(k: Int) {
+  var arr = [1,2,3,4,5,6,7]
+  
+  var maxSum = 0 
+  
+  for idx in 0..<arr.count {
+    
+  }
+  
+ return maxSum 
+}
