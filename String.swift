@@ -96,3 +96,13 @@ func removeDuplicatesIfAny(with array: [String]) -> [String] {
     }
     return resultArray
 }
+
+// eg agoda best apps - "apps best agoda"
+func reverseStringWithWords(_ str: String) -> String {
+    var resultstr = ""
+    let spiltArr = str.reversed().split(separator: " ")
+    for string in spiltArr {
+        resultstr += string.reversed() + " "
+    }
+   return resultstr
+}
