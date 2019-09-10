@@ -1,0 +1,23 @@
+//
+//  BinaryTree.swift
+//  DataStructures
+//
+//  Created by Satyam Sehgal on 10/09/19.
+//  Copyright © 2019 Satyam Sehgal. All rights reserved.
+//
+
+import Foundation
+
+enum BinaryTreeNode<T> {
+    case empty
+    indirect case node(BinaryTreeNode, T, BinaryTreeNode)
+    
+    var count: Int {
+        switch self {
+        case let .node(leftNode, _, rightNode):
+              return leftNode.count + 1 + rightNode.count
+        case .empty:
+            return 0
+        }
+    }
+}
