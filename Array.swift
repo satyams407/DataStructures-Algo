@@ -1,3 +1,16 @@
+// return two indexes which sum up to target K (TWO SUM)
+ func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+            var dict = Dictionary<Int, Int>()
+            
+            for (key, value) in nums.enumerated() {
+                if let idx = dict[target - value] {
+                    return [idx, key]
+                }
+                dict[value] = key
+            }
+            fatalError("no pair found")
+  }
+
 // minimum pair product 
 func minimumProduct(in array: [Int]) -> Int {
   var minProduct: Int = Int.max
