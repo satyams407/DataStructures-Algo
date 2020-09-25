@@ -222,14 +222,22 @@ func rearrange() {
 }
 
 // maximum sum subarray of length k
-func findMaxSubArray(k: Int) {
-  var arr = [1,2,3,4,5,6,7]
-  
-  var maxSum = 0 
-  
-  for idx in 0..<arr.count {
-    
-  }
-  
- return maxSum 
-}
+func maxiumSumSubArray(arr: [Int], k: Int) -> Int? {
+        guard k <= arr.count else { return nil }
+        
+        var maxSum = 0
+        
+        for idx in 0..<k { maxSum += arr[idx] }
+        
+        var currentSum = maxSum
+        
+        var i = k
+        while i < arr.count {
+            currentSum += arr[i] - arr[i-k]
+            if currentSum > maxSum {
+                maxSum = currentSum
+            }
+            i += 1
+        }
+        return maxSum
+    }
