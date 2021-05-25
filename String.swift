@@ -1,3 +1,11 @@
+extension String {
+    mutating func swapAt(_ index1: Int, _ index2: Int) {
+        var characters = Array(self)
+        characters.swapAt(index1, index2)
+        self = String(characters)
+    }
+}
+
 // MARK: Reverse a string without using inbuilt functions
 print("Enter the string")
 let string = readLine()!
