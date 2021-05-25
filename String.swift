@@ -8,6 +8,50 @@ for i in 0..<string.count  {
 }
 print(resultString)
 
+// MARK: Min number of swaps
+func getMinNumberOfSwapsToMakePalindrome(from string: inout String) -> Int {
+        guard string.count > 0 else  { return -1 }
+        
+        var totalSwapsCount = 0
+        
+        var i = 0
+        var j = string.count - 1
+     
+        while i < j {
+            let leftIndex = string.index(string.startIndex, offsetBy: i)
+            let rightIndex = string.index(string.startIndex, offsetBy: j)
+            
+            if string[leftIndex] != string[rightIndex] {
+                var k = j
+                var kIndex = rightIndex
+                while (i < k) && (string[leftIndex] != string[kIndex]) {
+                    k = k - 1
+                    kIndex = string.index(string.startIndex, offsetBy: k)
+                }
+                
+                if k == i {
+                    // NO match found
+                    string.swapAt(i, i + 1)
+                    totalSwapsCount = totalSwapsCount + 1
+                } else {
+                    while k < j {
+                        string.swapAt(k, k + 1)
+                        totalSwapsCount = totalSwapsCount + 1
+                        k = k + 1
+                    }
+                    i = i + 1
+                    j = j - 1
+                }
+            } else {
+                i = i + 1
+                j = j - 1
+            }
+        }
+        
+        if !testPalindrome(palindromeStr: string)  { return -1 }
+        
+        return totalSwapsCount
+    }
 
 // MARK: Validate a string palindrome or not
 func testPalindrome(palindromeStr: String) -> Bool {
