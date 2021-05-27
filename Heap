@@ -1,0 +1,4 @@
+struct Heap<T: Comparable> {
+    var data: [T]?
+    let priorityFunction: (T,T) -> Bool
+}
