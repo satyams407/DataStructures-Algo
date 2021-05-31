@@ -1,4 +1,12 @@
 struct Heap<T: Comparable> {
-    var data: [T]?
+    var data: [T]
     let priorityFunction: (T,T) -> Bool
+    
+    var isEmpty: Bool { return data.isEmpty }
+    
+    var count: Int { return data.count }
+    
+    var peek: T? { return data.first }
+    
+    func isRoot(_ index: Int) -> Bool { return index == 0 }
 }
