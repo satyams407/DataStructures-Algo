@@ -1,3 +1,6 @@
+// When Array is already sorted 
+// Time complexity - o(n) and space complexity - o(n)
+
 func twoSum(_ numbers: [Int], _ target: Int) -> [Int] {
     guard numbers.count > 1 else { return [Int]() }
     
