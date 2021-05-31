@@ -4,22 +4,26 @@
 func twoSum(_ numbers: [Int], _ target: Int) -> [Int] {
     guard numbers.count > 1 else { return [Int]() }
     
-    var left = 0, right = numbers.count - 1
+    var leftPointer = 0, rightPointer = numbers.count - 1
     
-    while left < right {
-        if numbers[left] + numbers[right] < target {
-            left += 1
-        } else if numbers[left] + numbers[right] > target {
-            right -= 1
+    while leftPointer < rightPointer {
+        if numbers[leftPointer] + numbers[rightPointer] < target {
+            leftPointer += 1
+        } else if numbers[leftPointer] + numbers[rightPointer] > target {
+            rightPointer -= 1
         } else {
-            return [left + 1, right + 1]
+            return [leftPointer + 1, rightPointer + 1]
         }
     }
     
     return [Int]()
 }
 
-// return two indexes which sum up to target K (TWO SUM)
+/*
+ * Traverse the array and store target - nums[i] in a dict
+ * Time Complexity: O(n), Space Complexity: O(n)
+ * return two indexes which sum up to target K (TWO SUM)
+*/
 func twoSumII(_ nums: [Int], _ target: Int) -> [Int] {
     var dict = Dictionary<Int, Int>()
     
