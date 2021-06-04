@@ -1,0 +1,5 @@
+func removeDuplicatesFrom(s: String) -> String {
+   var strSet = Set<Character>()
+   return s.filter{ strSet.insert($0).inserted } 
+}
+
