@@ -61,28 +61,6 @@ func getMinNumberOfSwapsToMakePalindrome(from string: inout String) -> Int {
     return totalSwapsCount
 }
 
-// MARK: Validate a string palindrome or not
-func testPalindrome(palindromeStr: String) -> Bool {
-    var left = 0
-    var right = palindromeStr.count - 1
-    if palindromeStr.count == 0 {
-         return false
-    } else if palindromeStr.count == 1 {
-        return true
-    }
-        
-    while left < right {
-      let leftIndex = palindromeStr.index(palindromeStr.startIndex, offsetBy: left)
-      let rightIndex = palindromeStr.index(palindromeStr.startIndex, offsetBy: right)
-      if palindromeStr[leftIndex] !=  palindromeStr[rightIndex] {
-          return false
-      }
-      left = left + 1
-      right = right - 1
-    }
-   return true
-}
-
 // MARK: Check Permutation - whether for given two strings, one is permutation of other or not
 // MARK: Check anagrams
 func checkPermutation(str1: String, str2: String) -> Bool {
