@@ -1,20 +1,4 @@
 
-func singleNumber(_ nums: [Int]) -> Int {
-        return nums.reduce(0, ^)
-}
-// Given a non-empty array of integers, every element appears twice except for one. Find that single one.
-func singleNumber(_ nums: [Int]) -> Int {
-        if nums.isEmpty { fatalError("Empty array is not valid input") }
-        var aSet: Set<Int> = Set()
-        for i in 0..<nums.count {
-            if aSet.contains(nums[i]) {
-                aSet.remove(nums[i])
-            } else {
-                aSet.insert(nums[i])
-            }
-        }
-        return aSet.first!
-}
 
 // minimum pair product 
 func minimumProduct(in array: [Int]) -> Int {
