@@ -1,8 +1,8 @@
-// Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+
 func singleNumber(_ nums: [Int]) -> Int {
         return nums.reduce(0, ^)
 }
-
+// Given a non-empty array of integers, every element appears twice except for one. Find that single one.
 func singleNumber(_ nums: [Int]) -> Int {
         if nums.isEmpty { fatalError("Empty array is not valid input") }
         var aSet: Set<Int> = Set()
