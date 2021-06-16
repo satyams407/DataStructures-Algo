@@ -1,0 +1,33 @@
+protocol StackDataSource {
+    associatedtype T
+    var count: Int { get }
+    var isEmpty: Bool { get }
+    
+    mutating func push(element: T)
+    mutating func pop() -> T?
+    func peek() -> T?
+}
+
+struct Stack<T: Equatable>: StackDataSource {
+    private var dataSource = [T]()
+    
+    public var count: Int {
+        dataSource.count
+    }
+    
+    public var isEmpty: Bool {
+        dataSource.count == 0
+    }
+    
+    public mutating func push(element: T) {
+        dataSource.append(element)
+    }
+    
+    public mutating func pop() -> T? {
+        dataSource.popLast()
+    }
+    
+    public func peek() -> T? {
+        dataSource.last
+    }
+}
