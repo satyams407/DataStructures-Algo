@@ -7,3 +7,20 @@ for i in 0..<string.count  {
     resultString.append(string[index])
 }
 print(resultString)
+
+
+// Without using any temporary variable 
+func reverse(with s: String) -> String {
+    var startIdx = 0 
+    var endIdx = s.count - 1
+    
+    while startIdx < endIdx {
+        s[startIdx] ^=  s[endIdx]
+        s[endIdx]   ^=  s[startIdx]
+        s[startIdx] ^=  s[endIdx]
+       
+        startIdx += 1
+        endIdx -= 1
+    }
+    return s
+}
